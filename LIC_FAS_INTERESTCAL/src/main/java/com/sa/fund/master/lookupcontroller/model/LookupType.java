@@ -1,6 +1,5 @@
 package com.sa.fund.master.lookupcontroller.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,65 +7,103 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LOOKUP_TYPE")
+@Table(name = "lookup_type")
 public class LookupType {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long lookupTypeId;
+	
+	private String lookupTypeName;
+	
+	private String description;
+	
+	public LookupType() {
+		
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(name = "CODE")
-    private String code;
-    
-    @Column(name = "NAME")
-    private String name;
-    
-    @Column(name = "CREATED_BY")
-    private Long createdBy;
-    
-    @Column(name = "MODIFIED_BY")
-    private Long modifiedBy;
+	public Long getLookupTypeId() {
+		return lookupTypeId;
+	}
 
-    public LookupType() {
-    }
+	public void setLookupTypeId(Long lookupTypeId) {
+		this.lookupTypeId = lookupTypeId;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getLookupTypeName() {
+		return lookupTypeName;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setLookupTypeName(String lookupTypeName) {
+		this.lookupTypeName = lookupTypeName;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getName() {
-        return name;
-    }
+}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+package com.sa.fund.master.lookupcontroller.model;
 
-    public Long getCreatedBy() {
-        return createdBy;
-    }
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
+@Entity
+@Table(name = "lookup_value")
+public class LookupValue {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long lookupValueId;
+	
+	private Long lookupTypeId;
+	
+	private String lookupValueName;
+	
+	private String description;
+	
+	public LookupValue() {
+		
+	}
 
-    public Long getModifiedBy() {
-        return modifiedBy;
-    }
+	public Long getLookupValueId() {
+		return lookupValueId;
+	}
 
-    public void setModifiedBy(Long modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
+	public void setLookupValueId(Long lookupValueId) {
+		this.lookupValueId = lookupValueId;
+	}
+
+	public Long getLookupTypeId() {
+		return lookupTypeId;
+	}
+
+	public void setLookupTypeId(Long lookupTypeId) {
+		this.lookupTypeId = lookupTypeId;
+	}
+
+	public String getLookupValueName() {
+		return lookupValueName;
+	}
+
+	public void setLookupValueName(String lookupValueName) {
+		this.lookupValueName = lookupValueName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 }
