@@ -1,30 +1,47 @@
-// Entity/Model class
 package com.sa.fund.interest.controller.policybatchcontroller.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "policy_master")
 public class PolicyMasterEntity {
-    @Id
-    private int policyId;
-    private String policyNumber;
-    private String trnxDate;
-    private String variant;
-    private String policyType;
-    private boolean isBatch;
-    private boolean isAuto;
-    private boolean setOpeningBalance;
-    private boolean recalculate;
-    private String licId;
 
-    public int getPolicyId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "policy_id")
+    private String policyId;
+
+    @Column(name = "policy_number")
+    private String policyNumber;
+
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
+
+    @Column(name = "financial_year")
+    private String financialYear;
+
+    @Column(name = "modified_on")
+    private Date modifiedOn;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPolicyId() {
         return policyId;
     }
 
-    public void setPolicyId(int policyId) {
+    public void setPolicyId(String policyId) {
         this.policyId = policyId;
     }
 
@@ -36,67 +53,36 @@ public class PolicyMasterEntity {
         this.policyNumber = policyNumber;
     }
 
-    public String getTrnxDate() {
-        return trnxDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setTrnxDate(String trnxDate) {
-        this.trnxDate = trnxDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getVariant() {
-        return variant;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setVariant(String variant) {
-        this.variant = variant;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
-    public String getPolicyType() {
-        return policyType;
+    public String getFinancialYear() {
+        return financialYear;
     }
 
-    public void setPolicyType(String policyType) {
-        this.policyType = policyType;
+    public void setFinancialYear(String financialYear) {
+        this.financialYear = financialYear;
     }
 
-    public boolean isBatch() {
-        return isBatch;
+    public Date getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setBatch(boolean batch) {
-        isBatch = batch;
+    public void setModifiedOn(Date modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
-    public boolean isAuto() {
-        return isAuto;
-    }
-
-    public void setAuto(boolean auto) {
-        isAuto = auto;
-    }
-
-    public boolean isSetOpeningBalance() {
-        return setOpeningBalance;
-    }
-
-    public void setSetOpeningBalance(boolean setOpeningBalance) {
-        this.setOpeningBalance = setOpeningBalance;
-    }
-
-    public boolean isRecalculate() {
-        return recalculate;
-    }
-
-    public void setRecalculate(boolean recalculate) {
-        this.recalculate = recalculate;
-    }
-
-    public String getLicId() {
-        return licId;
-    }
-
-    public void setLicId(String licId) {
-        this.licId = licId;
-    }
 }
