@@ -1,14 +1,13 @@
-package com.sa.fund.master.lookupcontroller.repository;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import com.sa.fund.master.lookupcontroller.model.MstLookUpTypesEntity;
+import com.sa.fund.master.lookupcontroller.dto.LookUpValuesDto;
+import com.sa.fund.master.lookupcontroller.entity.MstPageLookUpType;
 
-@Repository
-public interface MstPageLookUpTypeRepository extends JpaRepository<MstLookUpTypesEntity, Long> {
+public interface MstPageLookUpTypeRepository extends JpaRepository<MstPageLookUpType, Long> {
 
-    MstLookUpTypesEntity findByIdAndIsActiveTrue(Long id);
-    
-    MstLookUpTypesEntity findByCodeAndIsActiveTrue(String code);
+//This method is used to retrieve the master lookup value by its ID
+    MstPageLookUpType findByIdAndIsActiveTrue(Long id);
+
+//This method is used to map the entity to a LookUpValuesDto object
+    LookUpValuesDto mapPageLookUpTypeAndValueEntityToDto(MstPageLookUpType mstPageLookUpType);
 }
