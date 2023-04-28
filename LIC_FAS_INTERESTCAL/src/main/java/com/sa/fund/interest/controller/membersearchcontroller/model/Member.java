@@ -1,50 +1,60 @@
+// Entity/Model class
 package com.sa.fund.interest.controller.membersearchcontroller.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "members")
 public class Member {
- 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    private String code;
-    private String name;
-    private String address;
- 
- 
+    private String policyNumber;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+
+    public Member() {
+    }
+
     public Long getId() {
         return id;
     }
- 
+
     public void setId(Long id) {
         this.id = id;
     }
- 
-    public String getCode() {
-        return code;
+
+    public String getPolicyNumber() {
+        return policyNumber;
     }
- 
-    public void setCode(String code) {
-        this.code = code;
+
+    public void setPolicyNumber(String policyNumber) {
+        this.policyNumber = policyNumber;
     }
- 
-    public String getName() {
-        return name;
+
+    public String getFirstName() {
+        return firstName;
     }
- 
-    public void setName(String name) {
-        this.name = name;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
- 
-    public String getAddress() {
-        return address;
+
+    public String getLastName() {
+        return lastName;
     }
- 
-    public void setAddress(String address) {
-        this.address = address;
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
 }
