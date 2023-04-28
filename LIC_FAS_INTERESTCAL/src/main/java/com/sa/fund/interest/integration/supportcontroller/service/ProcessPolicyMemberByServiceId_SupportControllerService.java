@@ -1,23 +1,23 @@
 package com.sa.fund.interest.integration.supportcontroller.service;
 
-import java.util.Map;
-
+import com.sa.fund.interest.integration.supportcontroller.dto.FundChangeDto;
+import com.sa.fund.interest.integration.supportcontroller.repository.ProcessPolicyMemberByServiceId_SupportControllerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sa.fund.interest.integration.supportcontroller.dto.CommonResponseDto;
-import com.sa.fund.interest.integration.supportcontroller.exception.ApplicationException;
-import com.sa.fund.interest.integration.supportcontroller.exception.RequiredFieldException;
-import com.sa.fund.interest.integration.supportcontroller.repository.ProcessPolicyMemberByServiceId_SupportControllerRepository;
+import java.util.List;
 
 @Service
 public class ProcessPolicyMemberByServiceId_SupportControllerService {
-	
-	@Autowired
-	private ProcessPolicyMemberByServiceId_SupportControllerRepository repository;
-	
-	public CommonResponseDto<Map<String, String>> processMemberFundByPolicy(Long serviceId) throws RequiredFieldException, ApplicationException {
-		return repository.processMemberFundByPolicy(serviceId);
-	}
-	
+
+    @Autowired
+    ProcessPolicyMemberByServiceId_SupportControllerRepository processPolicyMemberByServiceId_SupportControllerRepository;
+
+    public int updateFundChangeDto(String service_id, String source_policy_id, String destination_policy_id, String id) {
+        return processPolicyMemberByServiceId_SupportControllerRepository.updateFundChangeDto(service_id, source_policy_id, destination_policy_id, id);
+    }
+
+    public List<FundChangeDto> findByServiceIdOrSourceAndDestinationPolicies(String service_id, String source_policy_id, String destination_policy_id) {
+        return processPolicyMemberByServiceId_SupportControllerRepository.findByServiceIdOrSourceAndDestinationPolicies(service_id, source_policy_id, destination_policy_id);
+    }
 }
