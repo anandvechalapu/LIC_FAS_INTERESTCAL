@@ -1,29 +1,25 @@
 @Repository
-public class ExternalCalculateAirMfrRaFundIntegrationControllerRepository {
-    private Logger logger = LoggerFactory.getLogger(ExternalCalculateAirMfrRaFundIntegrationControllerRepository.class);
+public class ExternalcalculateAirMfrRaFundIntegrationControllerRepository {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExternalcalculateAirMfrRaFundIntegrationControllerRepository.class);
 
     @Autowired
     private PolicyFundCoreService policyFundCoreService;
 
-    public FundSearchResponseDto calculateAirMfrRa(AirMfrRaRequestDto requestDto){
-        logger.info("Starting to calculate AIR, MFR, and RA values");
-
-        FundSearchResponseDto fundSearchResponseDto = null;
+    public FundSearchResponseDto calculateAirMfrRa(AirMfrRaRequestDto airMfrRaRequestDto) {
+        FundSearchResponseDto fundSearchResponseDto = new FundSearchResponseDto();
         try {
-            // Calculate AIR, MFR, and RA values
-            fundSearchResponseDto = policyFundCoreService.calcInterestForAirMfrRa(requestDto);
-            fundSearchResponseDto.setStatus("SUCCESS");
-            fundSearchResponseDto.setStatusId(1);
-            fundSearchResponseDto.setMessage("RECORD_RETRIEVED");
-            logger.info("Calculation of AIR, MFR, and RA values successful");
+            LOGGER.info("Start of calculation process");
+            fundSearchResponseDto = policyFundCoreService.calcInterestForAirMfrRa(airMfrRaRequestDto);
+            fundSearchResponseDto.setResponseStatus("SUCCESS");
+            fundSearchResponseDto.setStatusId("1");
+            fundSearchResponseDto.setResponseMessage("RECORD_RETRIEVED");
+            LOGGER.info("End of calculation process");
         } catch (Exception e) {
-            fundSearchResponseDto = new FundSearchResponseDto();
-            fundSearchResponseDto.setStatus("ERROR");
-            fundSearchResponseDto.setStatusId(0);
-            fundSearchResponseDto.setMessage(e.getMessage());
-            logger.error("Calculation of AIR, MFR, and RA values failed", e);
+            fundSearchResponseDto.setResponseStatus("ERROR");
+            fundSearchResponseDto.setStatusId("0");
+            fundSearchResponseDto.setResponseMessage(e.getMessage());
         }
-
         return fundSearchResponseDto;
     }
 }
