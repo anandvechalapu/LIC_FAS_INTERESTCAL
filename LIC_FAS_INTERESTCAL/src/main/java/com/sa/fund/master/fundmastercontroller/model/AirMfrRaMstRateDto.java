@@ -1,31 +1,42 @@
 package com.sa.fund.master.fundmastercontroller.model;
 
-import javax.persistence.Column;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "air_mfr_ra_mst_rate")
 public class AirMfrRaMstRateDto {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "mfr_id")
-    private Long mfrId;
+    @Column(name = "product")
+    private String product;
 
-    @Column(name = "air_id")
-    private Long airId;
+    @Column(name = "variant")
+    private String variant;
 
-    @Column(name = "air_rate")
-    private Double airRate;
+    @Column(name = "financial_year")
+    private String financialYear;
 
-    //getters and setters
+    @Column(name = "effective_start_date")
+    private Date effectiveStartDate;
+
+    @Column(name = "effective_end_date")
+    private Date effectiveEndDate;
+
+    @Column(name = "active_status")
+    private Boolean activeStatus;
+
+    @Column(name = "modified_date")
+    private Date modifiedDate;
+
     public Long getId() {
         return id;
     }
@@ -34,28 +45,59 @@ public class AirMfrRaMstRateDto {
         this.id = id;
     }
 
-    public Long getMfrId() {
-        return mfrId;
+    public String getProduct() {
+        return product;
     }
 
-    public void setMfrId(Long mfrId) {
-        this.mfrId = mfrId;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
-    public Long getAirId() {
-        return airId;
+    public String getVariant() {
+        return variant;
     }
 
-    public void setAirId(Long airId) {
-        this.airId = airId;
+    public void setVariant(String variant) {
+        this.variant = variant;
     }
 
-    public Double getAirRate() {
-        return airRate;
+    public String getFinancialYear() {
+        return financialYear;
     }
 
-    public void setAirRate(Double airRate) {
-        this.airRate = airRate;
+    public void setFinancialYear(String financialYear) {
+        this.financialYear = financialYear;
     }
 
+    public Date getEffectiveStartDate() {
+        return effectiveStartDate;
+    }
+
+    public void setEffectiveStartDate(Date effectiveStartDate) {
+        this.effectiveStartDate = effectiveStartDate;
+    }
+
+    public Date getEffectiveEndDate() {
+        return effectiveEndDate;
+    }
+
+    public void setEffectiveEndDate(Date effectiveEndDate) {
+        this.effectiveEndDate = effectiveEndDate;
+    }
+
+    public Boolean getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(Boolean activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
 }
