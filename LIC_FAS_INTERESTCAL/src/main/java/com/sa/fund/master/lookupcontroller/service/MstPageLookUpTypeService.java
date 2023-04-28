@@ -1,13 +1,12 @@
 package com.sa.fund.master.lookupcontroller.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.sa.fund.master.lookupcontroller.dto.LookUpValuesDto;
+import com.sa.fund.master.lookupcontroller.entity.MstPageLookUpType;
+import com.sa.fund.master.lookupcontroller.repository.MstPageLookUpTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sa.fund.master.lookupcontroller.model.MstLookUpTypesEntity;
-import com.sa.fund.master.lookupcontroller.repository.MstPageLookUpTypeRepository;
+import java.util.Optional;
 
 @Service
 public class MstPageLookUpTypeService {
@@ -15,16 +14,16 @@ public class MstPageLookUpTypeService {
     @Autowired
     private MstPageLookUpTypeRepository mstPageLookUpTypeRepository;
 
-    public Optional<MstLookUpTypesEntity> getByIdAndIsActiveTrue(Long id){
+    //This method is used to retrieve the master lookup value by its ID
+    public Optional<MstPageLookUpType> getMstPageLookUpTypeById(Long id) {
         return mstPageLookUpTypeRepository.findByIdAndIsActiveTrue(id);
     }
 
-    public Optional<MstLookUpTypesEntity> getByCodeAndIsActiveTrue(String code){
-        return mstPageLookUpTypeRepository.findByCodeAndIsActiveTrue(code);
+    //This method is used to map the entity to a LookUpValuesDto object
+    public LookUpValuesDto mapPageLookUpTypeAndValueEntityToDto(MstPageLookUpType mstPageLookUpType) {
+        LookUpValuesDto lookUpValuesDto = new LookUpValuesDto();
+        lookUpValuesDto.setLookUpType(mstPageLookUpType.getLookUpType());
+        lookUpValuesDto.setLookUpValue(mstPageLookUpType.getLookUpValue());
+        return lookUpValuesDto;
     }
-
-    public List<MstLookUpTypesEntity> getAllByIsActiveTrue() {
-        return mstPageLookUpTypeRepository.findAllByIsActiveTrue();
-    }
-
 }
