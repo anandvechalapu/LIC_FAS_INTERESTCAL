@@ -1,70 +1,76 @@
 package com.sa.fund.master.fundmastercontroller.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FUND_INTEREST_SLAB_MST")
+@Table(name = "FundInterestSlabMst")
 public class FundInterestSlabMst {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+	
+	@Column(name = "EFFECTIVE_START_DATE")
+	private Date effectiveStartDate;
+	
+	@Column(name = "EFFECTIVE_END_DATE")
+	private Date effectiveEndDate;
+	
+	@Column(name = "INTEREST_RATE")
+	private Float interestRate;
+	
+	@Column(name = "IS_ACTIVE")
+	private Boolean isActive;
+	
+	public FundInterestSlabMst() {
+		
+	}
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue
-    private Long id;
+	public Long getId() {
+		return id;
+	}
 
-    @Column(name = "FUND_ID")
-    private Long fundId;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Column(name = "INTEREST_RATE_SLAB")
-    private Double interestRateSlab;
+	public Date getEffectiveStartDate() {
+		return effectiveStartDate;
+	}
 
-    @Column(name = "VALID_FROM_DATE")
-    private String validFromDate;
+	public void setEffectiveStartDate(Date effectiveStartDate) {
+		this.effectiveStartDate = effectiveStartDate;
+	}
 
-    @Column(name = "VALID_TO_DATE")
-    private String validToDate;
+	public Date getEffectiveEndDate() {
+		return effectiveEndDate;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setEffectiveEndDate(Date effectiveEndDate) {
+		this.effectiveEndDate = effectiveEndDate;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Float getInterestRate() {
+		return interestRate;
+	}
 
-    public Long getFundId() {
-        return fundId;
-    }
+	public void setInterestRate(Float interestRate) {
+		this.interestRate = interestRate;
+	}
 
-    public void setFundId(Long fundId) {
-        this.fundId = fundId;
-    }
+	public Boolean getIsActive() {
+		return isActive;
+	}
 
-    public Double getInterestRateSlab() {
-        return interestRateSlab;
-    }
-
-    public void setInterestRateSlab(Double interestRateSlab) {
-        this.interestRateSlab = interestRateSlab;
-    }
-
-    public String getValidFromDate() {
-        return validFromDate;
-    }
-
-    public void setValidFromDate(String validFromDate) {
-        this.validFromDate = validFromDate;
-    }
-
-    public String getValidToDate() {
-        return validToDate;
-    }
-
-    public void setValidToDate(String validToDate) {
-        this.validToDate = validToDate;
-    }
-
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 }
