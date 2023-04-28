@@ -1,17 +1,9 @@
-package com.sa.fund.master.fundmastercontroller.repository;
-
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
-import com.sa.fund.master.fundmastercontroller.model.AirMfrRa;
-
 @Repository
-public interface FundMasterControllerRepository extends JpaRepository<AirMfrRa, Long> {
+public interface FundMasterControllerRepository extends JpaRepository<Variant, Long> {
 
-    @Query("SELECT a FROM AirMfrRa a")
-    List<AirMfrRa> getAirMfrRa();
+	@Cached(key = "FUND_getVariant")
+	@Cacheable(unless = "#result == null")
+	@Query("SELECT v FROM Variant v WHERE v.variantId = :variantId")
+	Optional<Variant> getVariant(@Param("variantId") Long variantId); 
 
 }
